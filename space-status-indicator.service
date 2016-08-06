@@ -1,0 +1,12 @@
+[Unit]
+Description=Space status indicator for Hackerspaces
+After=network.target
+
+[Service]
+ExecStart=/usr/local/sbin/macs.py
+Type=simple
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
