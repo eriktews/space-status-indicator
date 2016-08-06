@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Status messages</title>
+    <style>
+      .error { background-color:#BFBFBF; }
+      #text 	{text-align:center; font-size:large; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 100%; }
+    </style>
+  </head>
+  <body class="error">
+    <div id="text">Loading</div>
+  <script src="socket.io.js"></script>
+  <script src="jquery-1.12.4.min.js"></script>
+  <script>
+    // Modify the [colour,message] pairs here to match your Hackerspace
+    var display = {};
+    display[0] = ["#BFBFBF", "Only members at the moment, please don't disturb"];
+    display[1] = ["#FFFF00", "One guest at fizzPOP"];
+    display[-1] = ["#FFFF00", "There are {0} guests at fizzPOP"];
+
+    // Should the website be hosted on a different host/port, change the path here!
+    var socket = io("/online");
+    socket.on('log', function(msg){
+      var c;
+      var t;
+      if (msg in display) {
+        c = display[msg][0];
+        t = display[msg][1];
+      } else {
+        c = display[-1][0];
+        t = display[-1][1].replace("{0}", msg);
+      }
+      $("body").css("background-color", c);
+      $('#text').text(t);
+    });
+    var problem = function(){
+      $('body').css('background-color', '#BFBFBF');
+      $('#text').text("Connection problem");
+    }
+    socket.on('connect_error', problem);
+    socket.on('connect_timeout', problem);
+    socket.on('reconnect_error', problem);
+    socket.on('reconnect_failed', problem);
+  </script>
+  </body>
+</html>
