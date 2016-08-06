@@ -1,0 +1,20 @@
+{
+    "api": "0.13",
+    "space": "FizzPOP",
+    "logo": "http://www.fizzpop.org.uk/wp-content/uploads/2014/01/800px-Logo_improbable_machine.png",
+    "url": "http://www.fizzpop.org.uk/",
+    "location": {
+        "address": "FizzPOP Makerspace LTD, Rea Studios, 90 Floodgate Street, Digbeth, Birmingham B5 5SR, United Kingdom",
+        "lon": -1.8832538,
+        "lat": 52.4768605
+    },
+    "contact": {
+        "twitter": "@fzzpop"
+    },
+    "issue_report_channels": [
+        "twitter"
+    ],
+    "state": {
+        "open": true
+    }
+}
