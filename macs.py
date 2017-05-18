@@ -192,7 +192,7 @@ if __name__ == "__main__":
 	logging.basicConfig(level=logging.WARNING)
 	parser = argparse.ArgumentParser(description="Monitor the status of a hackerspace")
 	parser.add_argument("--database", help="File used to store the MACs that are almost permanently online", default="/var/lib/space-status-indicator/alwaysOn.db")
-	parser.add_argument("--cmd", help="The command that is executed to monitor the traffic on the netwrok", default="tcpdump -tt -e -n -i eth0 broadcast or multicast")
+	parser.add_argument("--cmd", help="The command that is executed to monitor the traffic on the netwrok", default="tcpdump -tt -e -n -q -i eth0 broadcast or multicast")
 	parser.add_argument("--apifile", help="The JSON file that is used as a template for the hackerspace API", default="/var/lib/space-status-indicator/hackerspace.json")
 	args = parser.parse_args()
 	
